@@ -2,8 +2,8 @@
 const works = [
   // PIXEL PROJECT — real images, links to case page
   { cat: 'cafe',    img: 'pixel_cafe.jpg',   label: 'Пиксель-арт',  title: 'Кофейня · игровой проект',   color: '#E8D5C0', link: 'pixel.html' },
-  { cat: 'chars',   img: 'pixel_chars1.jpg'', label: 'Персонажи',    title: 'Дубликат кофейни',          color: '#FFD8C0', link: 'pixel.html' },
-  { cat: 'chars',   img: 'pixel_char2.jpg'',  label: 'Персонаж',     title: 'Дубликат кофейни',             color: '#E8D8F0', link: 'pixel.html' },
+  { cat: 'chars',   img: 'pixel_chars1.jpg', label: 'Персонажи',    title: 'Посетители кофейни',          color: '#FFD8C0', link: 'pixel.html' },
+  { cat: 'chars',   img: 'pixel_char2.jpg',  label: 'Персонаж',     title: 'Главная героиня',             color: '#E8D8F0', link: 'pixel.html' },
   // Placeholders — замени на реальные работы
   { cat: 'aesthetic', emoji: '🌸', label: 'Эстетика',  title: 'Весенняя эстетика',    color: '#FFE0E8' },
   { cat: 'fantasy',   emoji: '🐉', label: 'Фэнтези',   title: 'Лесная фея',           color: '#D8E8D8' },
