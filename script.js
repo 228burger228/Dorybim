@@ -47,10 +47,16 @@ function renderGallery(cat) {
     item.style.opacity = '0';
     item.style.transform = 'translateY(20px)';
     item.style.transition = `opacity 0.4s ease ${i * 0.06}s, transform 0.4s ease ${i * 0.06}s`;
+    item.style.cursor = (w.link || w.img) ? 'pointer' : 'default';
 
-    item.addEventListener('click', () => {
+    // Overlay must not block pointer events
+    const overlay = item.querySelector('.gallery-overlay');
+    if (overlay) overlay.style.pointerEvents = 'none';
+
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
       if (w.link) { window.location.href = w.link; return; }
-      if (w.img) { openLightbox(w.img); }
+      if (w.img)  { openLightbox(w.img); }
     });
 
     grid.appendChild(item);
