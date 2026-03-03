@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DoryBim — Иллюстрации & Арт</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#hero" class="nav-logo">DoryBim</a>
+  <a href="#gallery">Работы</a>
+  <a href="#about">О себе</a>
+  <a href="#price">Прайс</a>
+  <a href="#contacts">Контакты</a>
+  <a href="#contacts" class="nav-order">Заказать ✦</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-blob blob-1"></div>
+  <div class="hero-blob blob-2"></div>
+  <div class="hero-blob blob-3"></div>
+
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-tag">Иллюстратор & Цифровой художник</div>
+      <h1>Рисую<br/><em>образы,</em><br/>что остаются</h1>
+      <p class="hero-desc">
+        Персонажи, уютные интерьеры, фэнтези и эстетика — каждая работа с душой и вниманием к деталям.
+      </p>
+      <div class="hero-btns">
+        <a href="#gallery" class="btn-primary">Смотреть работы →</a>
+        <a href="#price" class="btn-secondary">Заказать арт</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <div class="hero-img-placeholder">
+          <span>🎨</span>
+          <p>Фото художницы</p>
+        </div>
+        <div class="hero-float-card card-1">
+          <div class="card-icon">✦</div>
+          <div>
+            <div class="card-label">Работ создано</div>
+            <div class="card-val">100+</div>
+          </div>
+        </div>
+        <div class="hero-float-card card-2">
+          <div class="card-icon">🌸</div>
+          <div>
+            <div class="card-label">Направлений</div>
+            <div class="card-val">6 стилей</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALLERY ─── -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="section-tag reveal">Портфолио</div>
+    <h2 class="section-title reveal">Мои работы</h2>
+    <p class="section-sub reveal">Персонажи, кафе и интерьеры, эстетика, фэнтези — листай по категориям.</p>
+
+    <div class="gallery-tabs reveal">
+      <button class="tab-btn active" data-cat="all">Все работы</button>
+      <button class="tab-btn" data-cat="chars">🧑‍🎨 Персонажи</button>
+      <button class="tab-btn" data-cat="cafe">☕ Кафе & интерьеры</button>
+      <button class="tab-btn" data-cat="aesthetic">🌸 Эстетика</button>
+      <button class="tab-btn" data-cat="fantasy">🐉 Фэнтези</button>
+      <button class="tab-btn" data-cat="cute">🍓 Милота</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Карточки генерируются JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal-left">
+        <div class="about-photo-placeholder">🎨</div>
+        <div class="about-badge">
+          <span class="num">100+</span>
+          <span class="lbl">Работ</span>
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="section-tag">О художнице</div>
+        <h2 class="section-title">Привет,<br/><em>я Дори</em> 🌱</h2>
+        <p style="font-size:1rem;color:var(--brown-mid);line-height:1.8;margin-bottom:20 px;">
+          Цифровой иллюстратор, влюблённая в уютные кафе, сказочных персонажей и тонкую эстетику. Рисую уже несколько лет и каждый раз открываю что-то новое в своём стиле.
+        </p>
+        <p style="font-size:1rem;color:var(--brown-mid);line-height:1.8;margin-bottom:32 px;">
+          Работаю с заказчиками по всему интернету — персонажи под вас, иллюстрации для проектов, поздравительные открытки и просто арт с душой.
+        </p>
+        <div class="about-chips">
+          <span class="chip">🧑‍🎨 Персонажи</span>
+          <span class="chip">☕ Кафе & интерьеры</span>
+          <span class="chip">🌸 Эстетика</span>
+          <span class="chip">🐉 Фэнтези</span>
+          <span class="chip">🍓 Милота</span>
+          <span class="chip">💌 Открытки</span>
+        </div>
+        <div style="margin-top:36 px;">
+          <a href="#contacts" class="btn-primary">Написать мне →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICE ─── -->
+<section id="price">
+  <div class="section-inner">
+    <div class="section-tag reveal">Прайс-лист</div>
+    <h2 class="section-title reveal">Стоимость работ</h2>
+    <p class="section-sub reveal">Все цены ориентировочные — итоговая стоимость зависит от сложности и деталей.</p>
+
+    <div class="price-grid">
+
+      <div class="price-card reveal">
+        <div class="price-icon">🌿</div>
+        <div class="price-name">Скетч</div>
+        <div class="price-desc">Чёрно-белая линейная работа, идеально для быстрого арта</div>
+        <div class="price-amount">от 500 <span>₽</span></div>
+        <ul class="price-list">
+          <li class="price-item">Один персонаж / объект</li>
+          <li class="price-item">Чёрно-белое / монохром</li>
+          <li class="price-item">До 3 правок</li>
+          <li class="price-item">Срок: 2–4 дня</li>
+        </ul>
+        <a href="#contacts" class="btn-order btn-order-light">Заказать</a>
+      </div>
+
+      <div class="price-card featured reveal">
+        <div class="featured-badge">✦ Популярное</div>
+        <div class="price-icon">🌸</div>
+        <div class="price-name">Полноцвет</div>
+        <div class="price-desc">Детальная работа с цветом, светом и проработанным фоном</div>
+        <div class="price-amount">от 1500 <span>₽</span></div>
+        <ul class="price-list">
+          <li class="price-item">Персонаж + фон</li>
+          <li class="price-item">Полный цвет и освещение</li>
+          <li class="price-item">До 5 правок</li>
+          <li class="price-item">Срок: 5–10 дней</li>
+        </ul>
+        <a href="#contacts" class="btn-order btn-order-dark">Заказать</a>
+      </div>
+
+      <div class="price-card reveal">
+        <div class="price-icon">🏡</div>
+        <div class="price-name">Интерьер / Сцена</div>
+        <div class="price-desc">Кафе, комнаты, уютные места — детальные иллюстрации сцен</div>
+        <div class="price-amount">от 2500 <span>₽</span></div>
+        <ul class="price-list">
+          <li class="price-item">Сложная сцена с деталями</li>
+          <li class="price-item">Полный цвет + атмосфера</li>
+          <li class="price-item">До 5 правок</li>
+          <li class="price-item">Срок: 7–14 дней</li>
+        </ul>
+        <a href="#contacts" class="btn-order btn-order-light">Заказать</a>
+      </div>
+
+    </div>
+
+    <div class="price-note reveal">
+      💬 Не нашли нужный формат? Напишите — обсудим индивидуально.<br/>
+      Открытки, серии, коммерческое использование — всё обговаривается.
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACTS ─── -->
+<section id="contacts">
+  <div class="section-inner">
+    <div class="section-tag reveal">Связаться</div>
+    <h2 class="section-title reveal">Давайте создадим<br/><em>что-то вместе</em></h2>
+
+    <div class="contacts-grid">
+
+      <div class="reveal-left">
+        <p style="font-size:0.95rem;color:var(--brown-mid);line-height:1.75;margin-bottom:28px;">
+          Хотите заказать арт или задать вопрос? Пишите в любое удобное место — отвечу в течение дня.
+        </p>
+        <div class="social-cards">
+          <a href="#" class="social-card">
+            <div class="social-icon si-tg">💬</div>
+            <div>
+              <div class="social-name">Telegram</div>
+              <div class="social-handle">@dorybim</div>
+            </div>
+            <div class="social-arrow">→</div>
+          </a>
+          <a href="#" class="social-card">
+            <div class="social-icon si-vk">🫐</div>
+            <div>
+              <div class="social-name">ВКонтакте</div>
+              <div class="social-handle">vk.com/dorybim</div>
+            </div>
+            <div class="social-arrow">→</div>
+          </a>
+          <a href="#" class="social-card">
+            <div class="social-icon si-inst">🌸</div>
+            <div>
+              <div class="social-name">Instagram</div>
+              <div class="social-handle">@dorybim</div>
+            </div>
+            <div class="social-arrow">→</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form reveal-right">
+        <div class="form-title">Заказать арт</div>
+        <div class="form-sub">Опишите идею — постараюсь воплотить её именно так, как вы представляете</div>
+
+        <div class="form-group">
+          <label>Ваше имя</label>
+          <input type="text" placeholder="Как к вам обращаться?"/>
+        </div>
+        <div class="form-group">
+          <label>Telegram / ВК / почта</label>
+          <input type="text" placeholder="Как с вами связаться?"/>
+        </div>
+        <div class="form-group">
+          <label>Тип работы</label>
+          <select>
+            <option value="">Выберите...</option>
+            <option>🌿 Скетч</option>
+            <option>🌸 Полноцвет</option>
+            <option>🏡 Интерьер / Сцена</option>
+            <option>💌 Открытка</option>
+            <option>🐉 Фэнтези / Персонаж</option>
+            <option>💬 Обсудим индивидуально</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Описание идеи</label>
+          <textarea rows="4" placeholder="Расскажите: что хотите, стиль, настроение, детали..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="handleSubmit(event)">Отправить заявку ✦</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-logo">DoryBim</div>
+  <div class="footer-sub">© 2025 DoryBim · Все работы защищены авторским правом</div>
+</footer>
+
+<!-- ─── LIGHTBOX ─── -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">✕</span>
+  <img class="lightbox-img" id="lightboxImg" src="" alt=""/>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
