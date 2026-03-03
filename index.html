@@ -6,6 +6,18 @@
   <title>DoryBim — Иллюстрации & Арт</title>
   <link rel="stylesheet" href="style.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <style>
+    .gallery-item { opacity: 1 !important; transform: none !important; }
+    .gallery-item.hidden { display: none !important; }
+    .gallery-item > img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      image-rendering: pixelated;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .gallery-item:hover > img { transform: scale(1.06); }
+  </style>
 </head>
 <body>
 
@@ -25,39 +37,26 @@
   <div class="hero-blob blob-1"></div>
   <div class="hero-blob blob-2"></div>
   <div class="hero-blob blob-3"></div>
-
   <div class="hero-content">
     <div class="hero-text">
       <div class="hero-tag">Иллюстратор & Цифровой художник</div>
       <h1>Рисую<br/><em>образы,</em><br/>что остаются</h1>
-      <p class="hero-desc">
-        Персонажи, уютные интерьеры, фэнтези и эстетика — каждая работа с душой и вниманием к деталям.
-      </p>
+      <p class="hero-desc">Персонажи, уютные интерьеры, фэнтези и эстетика — каждая работа с душой и вниманием к деталям.</p>
       <div class="hero-btns">
         <a href="#gallery" class="btn-primary">Смотреть работы →</a>
         <a href="#price" class="btn-secondary">Заказать арт</a>
       </div>
     </div>
-
     <div class="hero-visual">
       <div class="hero-img-wrap">
-        <div class="hero-img-placeholder">
-          <span>🎨</span>
-          <p>Фото художницы</p>
-        </div>
+        <div class="hero-img-placeholder"><span>🎨</span><p>Фото художницы</p></div>
         <div class="hero-float-card card-1">
           <div class="card-icon">✦</div>
-          <div>
-            <div class="card-label">Работ создано</div>
-            <div class="card-val">100+</div>
-          </div>
+          <div><div class="card-label">Работ создано</div><div class="card-val">100+</div></div>
         </div>
         <div class="hero-float-card card-2">
           <div class="card-icon">🌸</div>
-          <div>
-            <div class="card-label">Направлений</div>
-            <div class="card-val">6 стилей</div>
-          </div>
+          <div><div class="card-label">Направлений</div><div class="card-val">6 стилей</div></div>
         </div>
       </div>
     </div>
@@ -72,53 +71,96 @@
     <p class="section-sub reveal">Персонажи, кафе и интерьеры, эстетика, фэнтези — листай по категориям.</p>
 
     <div class="gallery-tabs reveal">
-      <button class="tab-btn active" data-cat="all">Все работы</button>
-      <button class="tab-btn" data-cat="chars">🧑‍🎨 Персонажи</button>
-      <button class="tab-btn" data-cat="cafe">☕ Кафе & интерьеры</button>
-      <button class="tab-btn" data-cat="aesthetic">🌸 Эстетика</button>
-      <button class="tab-btn" data-cat="fantasy">🐉 Фэнтези</button>
-      <button class="tab-btn" data-cat="cute">🍓 Милота</button>
+      <button class="tab-btn active" onclick="filterGallery('all',this)">Все работы</button>
+      <button class="tab-btn" onclick="filterGallery('chars',this)">🧑‍🎨 Персонажи</button>
+      <button class="tab-btn" onclick="filterGallery('cafe',this)">☕ Кафе & интерьеры</button>
+      <button class="tab-btn" onclick="filterGallery('aesthetic',this)">🌸 Эстетика</button>
+      <button class="tab-btn" onclick="filterGallery('fantasy',this)">🐉 Фэнтези</button>
+      <button class="tab-btn" onclick="filterGallery('cute',this)">🍓 Милота</button>
     </div>
 
     <div class="gallery-grid" id="galleryGrid">
-      <!-- Карточки генерируются JS -->
+
+      <!-- ── РЕАЛЬНЫЕ РАБОТЫ ── -->
+      <div class="gallery-item" data-cat="cafe" style="grid-column:span 2;aspect-ratio:2/1;cursor:pointer;" onclick="window.location.href='pixel.html'">
+        <img src="pixel_cafe.jpg" alt="Кофейня · игровой проект"/>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">Кофейня · игровой проект <span style="opacity:.6;font-size:.75rem;">→ подробнее</span></div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="chars" style="cursor:pointer;" onclick="window.location.href='pixel.html'">
+        <img src="pixel_chars1.jpg" alt="Посетители кофейни"/>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">Посетители кофейни <span style="opacity:.6;font-size:.75rem;">→ подробнее</span></div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="chars" style="cursor:pointer;" onclick="window.location.href='pixel.html'">
+        <img src="pixel_char2.jpg" alt="Главная героиня"/>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">Главная героиня <span style="opacity:.6;font-size:.75rem;">→ подробнее</span></div></div>
+      </div>
+
+      <!-- ── ЗАГЛУШКИ ── -->
+      <div class="gallery-item" data-cat="aesthetic">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#FFE0E8,#FAF6F0);"><span>🌸</span><p>Эстетика</p></div>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">Весенняя эстетика</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="fantasy">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#D8E8D8,#FAF6F0);"><span>🐉</span><p>Фэнтези</p></div>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">Лесная фея</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="cute">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#FFD8E0,#FAF6F0);"><span>🍓</span><p>Милота</p></div>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">Клубничный котик</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="cafe">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#F0E8D8,#FAF6F0);"><span>🏡</span><p>Интерьер</p></div>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">Уголок с книгами</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="aesthetic">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#D0D8F0,#FAF6F0);"><span>🌙</span><p>Эстетика</p></div>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">Ночная эстетика</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="fantasy">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#E8F0D8,#FAF6F0);"><span>🦋</span><p>Фэнтези</p></div>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">Бабочковая ведьма</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="cute">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#FFE8D8,#FAF6F0);"><span>🍰</span><p>Милота</p></div>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">Торт на праздник</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="chars">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#FFD8EC,#FAF6F0);"><span>🎀</span><p>Персонаж</p></div>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">Принцесса</div></div>
+      </div>
+
+      <div class="gallery-item" data-cat="cafe">
+        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#D8ECD8,#FAF6F0);"><span>🌿</span><p>Кафе</p></div>
+        <div class="gallery-overlay"><div class="gallery-overlay-text">Зелёная терраса</div></div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ─── PROJECTS ─── -->
-<section id="projects" style="background: var(--white);">
+<section id="projects" style="background:var(--white);">
   <div class="section-inner">
     <div class="section-tag reveal">Игровые проекты</div>
     <h2 class="section-title reveal">Проекты</h2>
     <p class="section-sub reveal">Большие работы — пиксель-арт для игр, серии иллюстраций и другие коллаборации.</p>
-
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;" class="projects-grid">
-
-      <!-- PIXEL PROJECT — реальный -->
-      <a href="pixel.html" style="text-decoration:none; grid-column: span 2;" class="proj-card reveal">
-        <div style="
-          background: #1E1A2E;
-          border-radius: var(--radius);
-          overflow: hidden;
-          position: relative;
-          cursor: pointer;
-          transition: transform 0.35s ease, box-shadow 0.35s ease;
-          height: 100%;
-          min-height: 320px;
-          display: flex;
-          flex-direction: column;
-        " onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.2)'"
-           onmouseout="this.style.transform='';this.style.boxShadow=''">
-
-          <!-- Scanlines -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;" class="projects-grid">
+      <a href="pixel.html" style="text-decoration:none;grid-column:span 2;" class="proj-card reveal">
+        <div style="background:#1E1A2E;border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer;transition:transform 0.35s ease,box-shadow 0.35s ease;height:100%;min-height:320px;display:flex;flex-direction:column;"
+             onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.2)'"
+             onmouseout="this.style.transform='';this.style.boxShadow=''">
           <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.08) 3px,rgba(0,0,0,0.08) 4px);pointer-events:none;z-index:1;"></div>
-
-          <!-- Image -->
-          <img src="pixel_cafe.jpg" alt="Кофейня"
-               style="width:100%;height:200px;object-fit:cover;image-rendering:pixelated;opacity:0.85;"/>
-
-          <div style="padding:28px 28px 24px; flex:1; position:relative; z-index:2;">
+          <img src="pixel_cafe.jpg" alt="Кофейня" style="width:100%;height:200px;object-fit:cover;image-rendering:pixelated;opacity:0.85;"/>
+          <div style="padding:28px 28px 24px;flex:1;position:relative;z-index:2;">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
               <span style="background:rgba(200,121,65,0.18);color:#C87941;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;border:1px solid rgba(200,121,65,0.3);">🎮 Пиксель-арт</span>
               <span style="background:rgba(90,138,90,0.18);color:#5A8A5A;font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:100px;">● В разработке</span>
@@ -131,34 +173,15 @@
               <span style="background:rgba(255,255,255,0.08);color:rgba(250,246,240,0.6);font-size:0.75rem;padding:4px 12px;border-radius:100px;">Персонажи</span>
             </div>
           </div>
-
-          <!-- Arrow -->
           <div style="position:absolute;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:rgba(200,121,65,0.2);border:1px solid rgba(200,121,65,0.4);display:flex;align-items:center;justify-content:center;color:#C87941;font-size:1rem;z-index:2;">→</div>
         </div>
       </a>
-
-      <!-- FUTURE PROJECT SLOT -->
-      <div class="reveal" style="
-        background: var(--cream);
-        border-radius: var(--radius);
-        min-height: 320px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 14px;
-        border: 2px dashed var(--cream-dark);
-        transition: border-color 0.3s;
-        padding: 32px;
-        text-align: center;
-        cursor: default;
-      " onmouseover="this.style.borderColor='var(--peach)'"
-         onmouseout="this.style.borderColor='var(--cream-dark)'">
+      <div class="reveal" style="background:var(--cream);border-radius:var(--radius);min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:2px dashed var(--cream-dark);transition:border-color 0.3s;padding:32px;text-align:center;"
+           onmouseover="this.style.borderColor='var(--peach)'" onmouseout="this.style.borderColor='var(--cream-dark)'">
         <div style="font-size:2.5rem;">✦</div>
         <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown-light);">Следующий проект</div>
         <div style="font-size:0.8rem;color:var(--brown-light);line-height:1.6;max-width:180px;">Здесь появится новая работа — следи за обновлениями</div>
       </div>
-
     </div>
   </div>
 </section>
@@ -169,21 +192,13 @@
     <div class="about-grid">
       <div class="about-img-wrap reveal-left">
         <div class="about-photo-placeholder">🎨</div>
-        <div class="about-badge">
-          <span class="num">100+</span>
-          <span class="lbl">Работ</span>
-        </div>
+        <div class="about-badge"><span class="num">100+</span><span class="lbl">Работ</span></div>
       </div>
-
       <div class="reveal-right">
         <div class="section-tag">О художнице</div>
         <h2 class="section-title">Привет,<br/><em>я Дори</em> 🌱</h2>
-        <p style="font-size:1rem;color:var(--brown-mid);line-height:1.8;margin-bottom:20px;">
-          Цифровой иллюстратор, влюблённая в уютные кафе, сказочных персонажей и тонкую эстетику. Рисую уже несколько лет и каждый раз открываю что-то новое в своём стиле.
-        </p>
-        <p style="font-size:1rem;color:var(--brown-mid);line-height:1.8;margin-bottom:32px;">
-          Работаю с заказчиками по всему интернету — персонажи под вас, иллюстрации для проектов, поздравительные открытки и просто арт с душой.
-        </p>
+        <p style="font-size:1rem;color:var(--brown-mid);line-height:1.8;margin-bottom:20px;">Цифровой иллюстратор, влюблённая в уютные кафе, сказочных персонажей и тонкую эстетику. Рисую уже несколько лет и каждый раз открываю что-то новое в своём стиле.</p>
+        <p style="font-size:1rem;color:var(--brown-mid);line-height:1.8;margin-bottom:32px;">Работаю с заказчиками по всему интернету — персонажи под вас, иллюстрации для проектов, поздравительные открытки и просто арт с душой.</p>
         <div class="about-chips">
           <span class="chip">🧑‍🎨 Персонажи</span>
           <span class="chip">☕ Кафе & интерьеры</span>
@@ -192,9 +207,7 @@
           <span class="chip">🍓 Милота</span>
           <span class="chip">💌 Открытки</span>
         </div>
-        <div style="margin-top:36px;">
-          <a href="#contacts" class="btn-primary">Написать мне →</a>
-        </div>
+        <div style="margin-top:36px;"><a href="#contacts" class="btn-primary">Написать мне →</a></div>
       </div>
     </div>
   </div>
@@ -206,9 +219,7 @@
     <div class="section-tag reveal">Прайс-лист</div>
     <h2 class="section-title reveal">Стоимость работ</h2>
     <p class="section-sub reveal">Все цены ориентировочные — итоговая стоимость зависит от сложности и деталей.</p>
-
     <div class="price-grid">
-
       <div class="price-card reveal">
         <div class="price-icon">🌿</div>
         <div class="price-name">Скетч</div>
@@ -222,7 +233,6 @@
         </ul>
         <a href="#contacts" class="btn-order btn-order-light">Заказать</a>
       </div>
-
       <div class="price-card featured reveal">
         <div class="featured-badge">✦ Популярное</div>
         <div class="price-icon">🌸</div>
@@ -237,7 +247,6 @@
         </ul>
         <a href="#contacts" class="btn-order btn-order-dark">Заказать</a>
       </div>
-
       <div class="price-card reveal">
         <div class="price-icon">🏡</div>
         <div class="price-name">Интерьер / Сцена</div>
@@ -251,13 +260,8 @@
         </ul>
         <a href="#contacts" class="btn-order btn-order-light">Заказать</a>
       </div>
-
     </div>
-
-    <div class="price-note reveal">
-      💬 Не нашли нужный формат? Напишите — обсудим индивидуально.<br/>
-      Открытки, серии, коммерческое использование — всё обговаривается.
-    </div>
+    <div class="price-note reveal">💬 Не нашли нужный формат? Напишите — обсудим индивидуально.<br/>Открытки, серии, коммерческое использование — всё обговаривается.</div>
   </div>
 </section>
 
@@ -266,53 +270,32 @@
   <div class="section-inner">
     <div class="section-tag reveal">Связаться</div>
     <h2 class="section-title reveal">Давайте создадим<br/><em>что-то вместе</em></h2>
-
     <div class="contacts-grid">
-
       <div class="reveal-left">
-        <p style="font-size:0.95rem;color:var(--brown-mid);line-height:1.75;margin-bottom:28px;">
-          Хотите заказать арт или задать вопрос? Пишите в любое удобное место — отвечу в течение дня.
-        </p>
+        <p style="font-size:0.95rem;color:var(--brown-mid);line-height:1.75;margin-bottom:28px;">Хотите заказать арт или задать вопрос? Пишите в любое удобное место — отвечу в течение дня.</p>
         <div class="social-cards">
           <a href="https://t.me/pomidory_666" target="_blank" class="social-card">
             <div class="social-icon si-tg">💬</div>
-            <div>
-              <div class="social-name">Telegram</div>
-              <div class="social-handle">@pomidory_666</div>
-            </div>
+            <div><div class="social-name">Telegram</div><div class="social-handle">@pomidory_666</div></div>
             <div class="social-arrow">→</div>
           </a>
           <a href="#" class="social-card">
             <div class="social-icon si-vk">🫐</div>
-            <div>
-              <div class="social-name">ВКонтакте</div>
-              <div class="social-handle">Добавить ссылку</div>
-            </div>
+            <div><div class="social-name">ВКонтакте</div><div class="social-handle">Добавить ссылку</div></div>
             <div class="social-arrow">→</div>
           </a>
           <a href="#" class="social-card">
             <div class="social-icon si-inst">🌸</div>
-            <div>
-              <div class="social-name">Instagram</div>
-              <div class="social-handle">Добавить ссылку</div>
-            </div>
+            <div><div class="social-name">Instagram</div><div class="social-handle">Добавить ссылку</div></div>
             <div class="social-arrow">→</div>
           </a>
         </div>
       </div>
-
       <div class="contact-form reveal-right">
         <div class="form-title">Заказать арт</div>
         <div class="form-sub">Опишите идею — постараюсь воплотить её именно так, как вы представляете</div>
-
-        <div class="form-group">
-          <label>Ваше имя</label>
-          <input type="text" placeholder="Как к вам обращаться?"/>
-        </div>
-        <div class="form-group">
-          <label>Telegram / ВК / почта</label>
-          <input type="text" placeholder="Как с вами связаться?"/>
-        </div>
+        <div class="form-group"><label>Ваше имя</label><input type="text" placeholder="Как к вам обращаться?"/></div>
+        <div class="form-group"><label>Telegram / ВК / почта</label><input type="text" placeholder="Как с вами связаться?"/></div>
         <div class="form-group">
           <label>Тип работы</label>
           <select>
@@ -325,13 +308,9 @@
             <option>💬 Обсудим индивидуально</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>Описание идеи</label>
-          <textarea rows="4" placeholder="Расскажите: что хотите, стиль, настроение, детали..."></textarea>
-        </div>
+        <div class="form-group"><label>Описание идеи</label><textarea rows="4" placeholder="Расскажите: что хотите, стиль, настроение, детали..."></textarea></div>
         <button class="btn-submit" onclick="handleSubmit(event)">Отправить заявку ✦</button>
       </div>
-
     </div>
   </div>
 </section>
@@ -348,6 +327,85 @@
   <img class="lightbox-img" id="lightboxImg" src="" alt=""/>
 </div>
 
-<script src="script.js"></script>
+<script>
+// ─── GALLERY FILTER ───
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const items = document.querySelectorAll('#galleryGrid .gallery-item');
+  let first = true;
+  items.forEach(item => {
+    const match = cat === 'all' || item.dataset.cat === cat;
+    item.classList.toggle('hidden', !match);
+    if (match) {
+      if (first) {
+        item.style.gridColumn = 'span 2';
+        item.style.aspectRatio = '2/1';
+        first = false;
+      } else {
+        item.style.gridColumn = '';
+        item.style.aspectRatio = '1';
+      }
+    }
+  });
+}
+
+// ─── LIGHTBOX ───
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ─── SCROLL REVEAL ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const siblings = [...entry.target.parentElement.querySelectorAll('.reveal,.reveal-left,.reveal-right')];
+      const index = siblings.indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), index * 100);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => observer.observe(el));
+
+// ─── NAV HIGHLIGHT ───
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
+
+// ─── SMOOTH SCROLL ───
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+  });
+});
+
+// ─── FORM ───
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = '✓ Заявка отправлена!';
+  btn.style.background = 'var(--peach-deep)';
+  setTimeout(() => { btn.textContent = 'Отправить заявку ✦'; btn.style.background = ''; }, 3000);
+}
+</script>
 </body>
 </html>
