@@ -13,6 +13,7 @@
 <nav>
   <a href="#hero" class="nav-logo">DoryBim</a>
   <a href="#gallery">Работы</a>
+  <a href="#projects">Проекты</a>
   <a href="#about">О себе</a>
   <a href="#price">Прайс</a>
   <a href="#contacts">Контакты</a>
@@ -81,6 +82,83 @@
 
     <div class="gallery-grid" id="galleryGrid">
       <!-- Карточки генерируются JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROJECTS ─── -->
+<section id="projects" style="background: var(--white);">
+  <div class="section-inner">
+    <div class="section-tag reveal">Игровые проекты</div>
+    <h2 class="section-title reveal">Проекты</h2>
+    <p class="section-sub reveal">Большие работы — пиксель-арт для игр, серии иллюстраций и другие коллаборации.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;" class="projects-grid">
+
+      <!-- PIXEL PROJECT — реальный -->
+      <a href="pixel.html" style="text-decoration:none; grid-column: span 2;" class="proj-card reveal">
+        <div style="
+          background: #1E1A2E;
+          border-radius: var(--radius);
+          overflow: hidden;
+          position: relative;
+          cursor: pointer;
+          transition: transform 0.35s ease, box-shadow 0.35s ease;
+          height: 100%;
+          min-height: 320px;
+          display: flex;
+          flex-direction: column;
+        " onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.2)'"
+           onmouseout="this.style.transform='';this.style.boxShadow=''">
+
+          <!-- Scanlines -->
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.08) 3px,rgba(0,0,0,0.08) 4px);pointer-events:none;z-index:1;"></div>
+
+          <!-- Image -->
+          <img src="pixel_cafe.png" alt="Кофейня"
+               style="width:100%;height:200px;object-fit:cover;image-rendering:pixelated;opacity:0.85;"/>
+
+          <div style="padding:28px 28px 24px; flex:1; position:relative; z-index:2;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+              <span style="background:rgba(200,121,65,0.18);color:#C87941;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;border:1px solid rgba(200,121,65,0.3);">🎮 Пиксель-арт</span>
+              <span style="background:rgba(90,138,90,0.18);color:#5A8A5A;font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:100px;">● В разработке</span>
+            </div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#FAF6F0;margin-bottom:8px;">Кофейня · Игровой проект</div>
+            <div style="font-size:0.85rem;color:rgba(250,246,240,0.55);line-height:1.7;margin-bottom:20px;">Персонажи, интерьеры и тайлсеты для учебной игры. Тема — уютная кофейня.</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;">
+              <span style="background:rgba(255,255,255,0.08);color:rgba(250,246,240,0.6);font-size:0.75rem;padding:4px 12px;border-radius:100px;">Спрайты</span>
+              <span style="background:rgba(255,255,255,0.08);color:rgba(250,246,240,0.6);font-size:0.75rem;padding:4px 12px;border-radius:100px;">Тайлсеты</span>
+              <span style="background:rgba(255,255,255,0.08);color:rgba(250,246,240,0.6);font-size:0.75rem;padding:4px 12px;border-radius:100px;">Персонажи</span>
+            </div>
+          </div>
+
+          <!-- Arrow -->
+          <div style="position:absolute;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:rgba(200,121,65,0.2);border:1px solid rgba(200,121,65,0.4);display:flex;align-items:center;justify-content:center;color:#C87941;font-size:1rem;z-index:2;">→</div>
+        </div>
+      </a>
+
+      <!-- FUTURE PROJECT SLOT -->
+      <div class="reveal" style="
+        background: var(--cream);
+        border-radius: var(--radius);
+        min-height: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        border: 2px dashed var(--cream-dark);
+        transition: border-color 0.3s;
+        padding: 32px;
+        text-align: center;
+        cursor: default;
+      " onmouseover="this.style.borderColor='var(--peach)'"
+         onmouseout="this.style.borderColor='var(--cream-dark)'">
+        <div style="font-size:2.5rem;">✦</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown-light);">Следующий проект</div>
+        <div style="font-size:0.8rem;color:var(--brown-light);line-height:1.6;max-width:180px;">Здесь появится новая работа — следи за обновлениями</div>
+      </div>
+
     </div>
   </div>
 </section>
