@@ -6,20 +6,106 @@
   <title>DoryBim — Иллюстрации & Арт</title>
   <link rel="stylesheet" href="style.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <style>
-    .gallery-item { opacity: 1 !important; transform: none !important; }
-    .gallery-item.hidden { display: none !important; }
-    .gallery-item > img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      image-rendering: pixelated;
-      transition: transform 0.5s ease;
-      display: block;
-    }
-    .gallery-item:hover > img { transform: scale(1.06); }
-  </style>
 </head>
 <body>
+
+<!-- ─── SAKURA CANVAS ─── -->
+<canvas id="sakura-canvas"></canvas>
+
+<!-- ─── SAKURA BRANCH — top right ─── -->
+<svg class="branch branch-tr" viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- Main thick branch sweeping from top-right corner down-left -->
+  <path d="M520 0 C480 30, 430 60, 370 110 C320 150, 280 170, 240 200" stroke="#3a2830" stroke-width="11" fill="none" stroke-linecap="round"/>
+  <!-- Sub-branch 1 — upper right, short upward -->
+  <path d="M430 60 C445 40, 460 20, 475 5" stroke="#3a2830" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- Sub-branch 2 — mid, going up-left -->
+  <path d="M370 110 C355 85, 345 65, 340 42" stroke="#3a2830" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  <!-- Sub-branch 3 — right of center going further right -->
+  <path d="M390 88 C410 75, 430 68, 455 60" stroke="#3a2830" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Sub-branch 4 — lower mid going right -->
+  <path d="M320 150 C330 128, 342 112, 355 95" stroke="#3a2830" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Tiny twigs -->
+  <path d="M475 5 C468 0, 485 0, 492 3" stroke="#3a2830" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M340 42 C333 36, 348 30, 356 34" stroke="#3a2830" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M355 95 C350 85, 362 82, 368 87" stroke="#3a2830" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M455 60 C452 50, 463 47, 468 52" stroke="#3a2830" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M240 200 C228 185, 232 172, 240 168" stroke="#3a2830" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- ── SAKURA FLOWERS on branch-tr ── -->
+  <!-- each flower: 5 petals as ellipses rotated around center -->
+  <!-- Flower A: near twig tip top-right ~(478,3) -->
+  <g transform="translate(483,8) rotate(-15)"><ellipse cx="0" cy="-7" rx="5" ry="7.5" fill="#FFDCE6" opacity="0.92"/><ellipse cx="0" cy="-7" rx="5" ry="7.5" fill="#FFDCE6" opacity="0.92" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-7" rx="5" ry="7.5" fill="#FFCCD8" opacity="0.88" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-7" rx="5" ry="7.5" fill="#FFCCD8" opacity="0.88" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-7" rx="5" ry="7.5" fill="#F4B8CA" opacity="0.85" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2.5" fill="#FFE8F0"/></g>
+  <!-- Flower B: near twig tip top-right ~(496,2) -->
+  <g transform="translate(500,14) rotate(10)"><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#FFD6E4" opacity="0.9"/><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#FFD6E4" opacity="0.9" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#F4B8CA" opacity="0.85" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#F4B8CA" opacity="0.85" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#F4B8CA" opacity="0.82" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2" fill="#FFE0EC"/></g>
+  <!-- Flower C: sub-branch 2 tip ~(343,40) -->
+  <g transform="translate(338,36) rotate(20)"><ellipse cx="0" cy="-6.5" rx="5" ry="7" fill="#FFDCE6" opacity="0.9"/><ellipse cx="0" cy="-6.5" rx="5" ry="7" fill="#FFDCE6" opacity="0.9" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-6.5" rx="5" ry="7" fill="#FFD0E0" opacity="0.86" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-6.5" rx="5" ry="7" fill="#FFD0E0" opacity="0.86" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-6.5" rx="5" ry="7" fill="#F4B8CA" opacity="0.82" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2.5" fill="#FFE8F0"/></g>
+  <!-- Flower D: on sub-branch 2, mid -->
+  <g transform="translate(352,30) rotate(-25)"><ellipse cx="0" cy="-5.5" rx="4.5" ry="6.5" fill="#FFE4EE" opacity="0.88"/><ellipse cx="0" cy="-5.5" rx="4.5" ry="6.5" fill="#FFE4EE" opacity="0.88" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-5.5" rx="4.5" ry="6.5" fill="#FFCCD8" opacity="0.84" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-5.5" rx="4.5" ry="6.5" fill="#FFCCD8" opacity="0.84" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-5.5" rx="4.5" ry="6.5" fill="#F4B8CA" opacity="0.8" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2" fill="#FFE0EC"/></g>
+  <!-- Flower E: sub-branch 3 tip -->
+  <g transform="translate(458,58) rotate(5)"><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#FFD6E4" opacity="0.9"/><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#FFD6E4" opacity="0.9" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#FFCCD8" opacity="0.85" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#FFCCD8" opacity="0.85" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#F4B8CA" opacity="0.82" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2.2" fill="#FFE8F0"/></g>
+  <!-- Flower F: main branch mid ~(390,88) -->
+  <g transform="translate(386,82) rotate(-30)"><ellipse cx="0" cy="-7" rx="5.5" ry="8" fill="#FFDCE6" opacity="0.88"/><ellipse cx="0" cy="-7" rx="5.5" ry="8" fill="#FFDCE6" opacity="0.88" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-7" rx="5.5" ry="8" fill="#FFD0E0" opacity="0.84" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-7" rx="5.5" ry="8" fill="#FFD0E0" opacity="0.84" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-7" rx="5.5" ry="8" fill="#F4B8CA" opacity="0.8" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2.8" fill="#FFE8F0"/></g>
+  <!-- Flower G: sub-branch 4 tip -->
+  <g transform="translate(358,93) rotate(18)"><ellipse cx="0" cy="-6" rx="5" ry="7" fill="#FFE4EE" opacity="0.9"/><ellipse cx="0" cy="-6" rx="5" ry="7" fill="#FFE4EE" opacity="0.9" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-6" rx="5" ry="7" fill="#FFCCD8" opacity="0.86" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-6" rx="5" ry="7" fill="#FFCCD8" opacity="0.86" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-6" rx="5" ry="7" fill="#F4B8CA" opacity="0.82" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2.5" fill="#FFE0EC"/></g>
+  <!-- Flower H: low on main branch ~(244,198) -->
+  <g transform="translate(240,190) rotate(-10)"><ellipse cx="0" cy="-6.5" rx="5" ry="7.5" fill="#FFD6E4" opacity="0.85"/><ellipse cx="0" cy="-6.5" rx="5" ry="7.5" fill="#FFD6E4" opacity="0.85" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-6.5" rx="5" ry="7.5" fill="#FFCCD8" opacity="0.8" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-6.5" rx="5" ry="7.5" fill="#FFCCD8" opacity="0.8" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-6.5" rx="5" ry="7.5" fill="#F4B8CA" opacity="0.76" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2.5" fill="#FFE0EC"/></g>
+
+  <!-- ── CHERRY flowers (different: 5 rounded petals, slightly deeper pink, with notch implied by color) ── -->
+  <!-- Cherry A: on sub-branch 1 tip ~(476,4) -->
+  <g transform="translate(468,0) rotate(30)"><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FFB8CE" opacity="0.9"/><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FFB8CE" opacity="0.9" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FF9EBC" opacity="0.85" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FF9EBC" opacity="0.85" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FFB8CE" opacity="0.88" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="3" fill="#FFD0E0"/><line x1="0" y1="0" x2="0" y2="-5" stroke="#E87CA0" stroke-width="0.7" opacity="0.7"/><line x1="0" y1="0" x2="4.7" y2="-1.5" stroke="#E87CA0" stroke-width="0.7" opacity="0.7"/><line x1="0" y1="0" x2="2.9" y2="4" stroke="#E87CA0" stroke-width="0.7" opacity="0.7"/><line x1="0" y1="0" x2="-2.9" y2="4" stroke="#E87CA0" stroke-width="0.7" opacity="0.7"/><line x1="0" y1="0" x2="-4.7" y2="-1.5" stroke="#E87CA0" stroke-width="0.7" opacity="0.7"/></g>
+  <!-- Cherry B: main branch near top ~(440,63) -->
+  <g transform="translate(435,55) rotate(-20)"><ellipse cx="0" cy="-7.5" rx="5.5" ry="8" fill="#FFC4D6" opacity="0.88"/><ellipse cx="0" cy="-7.5" rx="5.5" ry="8" fill="#FFC4D6" opacity="0.88" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-7.5" rx="5.5" ry="8" fill="#FFB0C8" opacity="0.84" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-7.5" rx="5.5" ry="8" fill="#FFB0C8" opacity="0.84" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-7.5" rx="5.5" ry="8" fill="#FFC4D6" opacity="0.86" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2.8" fill="#FFD4E4"/><line x1="0" y1="0" x2="0" y2="-5" stroke="#E87CA0" stroke-width="0.6" opacity="0.65"/><line x1="0" y1="0" x2="4.7" y2="-1.5" stroke="#E87CA0" stroke-width="0.6" opacity="0.65"/><line x1="0" y1="0" x2="2.9" y2="4" stroke="#E87CA0" stroke-width="0.6" opacity="0.65"/><line x1="0" y1="0" x2="-2.9" y2="4" stroke="#E87CA0" stroke-width="0.6" opacity="0.65"/><line x1="0" y1="0" x2="-4.7" y2="-1.5" stroke="#E87CA0" stroke-width="0.6" opacity="0.65"/></g>
+  <!-- Cherry C: main branch ~(320,152) -->
+  <g transform="translate(313,146) rotate(15)"><ellipse cx="0" cy="-7" rx="5.5" ry="7.5" fill="#FFB8CE" opacity="0.85"/><ellipse cx="0" cy="-7" rx="5.5" ry="7.5" fill="#FFB8CE" opacity="0.85" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-7" rx="5.5" ry="7.5" fill="#FF9EBC" opacity="0.8" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-7" rx="5.5" ry="7.5" fill="#FF9EBC" opacity="0.8" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-7" rx="5.5" ry="7.5" fill="#FFB8CE" opacity="0.83" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2.5" fill="#FFD0E0"/><line x1="0" y1="0" x2="0" y2="-5" stroke="#E87CA0" stroke-width="0.6" opacity="0.6"/><line x1="0" y1="0" x2="4.7" y2="-1.5" stroke="#E87CA0" stroke-width="0.6" opacity="0.6"/><line x1="0" y1="0" x2="2.9" y2="4" stroke="#E87CA0" stroke-width="0.6" opacity="0.6"/><line x1="0" y1="0" x2="-2.9" y2="4" stroke="#E87CA0" stroke-width="0.6" opacity="0.6"/><line x1="0" y1="0" x2="-4.7" y2="-1.5" stroke="#E87CA0" stroke-width="0.6" opacity="0.6"/></g>
+
+  <!-- Small scattered buds (not yet open) -->
+  <ellipse cx="403" cy="82" rx="3" ry="5" fill="#F4B8CA" opacity="0.75" transform="rotate(-15,403,82)"/>
+  <ellipse cx="365" cy="107" rx="2.5" ry="4.5" fill="#FFD0E0" opacity="0.7" transform="rotate(25,365,107)"/>
+  <ellipse cx="470" cy="10" rx="2.5" ry="4" fill="#FFCCD8" opacity="0.7" transform="rotate(10,470,10)"/>
+  <ellipse cx="280" cy="175" rx="3" ry="5" fill="#F4B8CA" opacity="0.65" transform="rotate(-20,280,175)"/>
+</svg>
+
+<!-- ─── CHERRY BRANCH — bottom left ─── -->
+<svg class="branch branch-bl" viewBox="0 0 460 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- Main branch from bottom-left going up-right -->
+  <path d="M0 340 C40 290, 90 250, 150 210 C200 175, 255 155, 310 125" stroke="#2e2030" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <!-- Sub-branch left going left-up -->
+  <path d="M90 258 C70 235, 55 210, 42 185" stroke="#2e2030" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- Sub-branch right going up-right -->
+  <path d="M200 178 C220 158, 238 140, 252 118" stroke="#2e2030" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  <!-- Sub-branch upper going high right -->
+  <path d="M265 148 C280 128, 298 112, 318 98" stroke="#2e2030" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <!-- Tiny twigs -->
+  <path d="M42 185 C36 178, 50 174, 56 178" stroke="#2e2030" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M42 185 C38 175, 30 170, 26 162" stroke="#2e2030" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M252 118 C248 108, 260 104, 265 110" stroke="#2e2030" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M318 98 C314 88, 326 84, 330 90" stroke="#2e2030" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M150 210 C140 200, 145 188, 152 186" stroke="#2e2030" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M310 125 C305 112, 316 108, 322 114" stroke="#2e2030" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- ── CHERRY flowers on branch-bl ── -->
+  <!-- Cherry 1: twig tip left ~(42,184) -->
+  <g transform="translate(36,180) rotate(10)"><ellipse cx="0" cy="-8" rx="6.5" ry="9" fill="#FFB8CE" opacity="0.92"/><ellipse cx="0" cy="-8" rx="6.5" ry="9" fill="#FFB8CE" opacity="0.92" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-8" rx="6.5" ry="9" fill="#FF9EBC" opacity="0.87" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-8" rx="6.5" ry="9" fill="#FF9EBC" opacity="0.87" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-8" rx="6.5" ry="9" fill="#FFC4D6" opacity="0.9" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="3.2" fill="#FFD4E4"/><line x1="0" y1="0" x2="0" y2="-5" stroke="#C8587A" stroke-width="0.8" opacity="0.7"/><line x1="0" y1="0" x2="4.7" y2="-1.5" stroke="#C8587A" stroke-width="0.8" opacity="0.7"/><line x1="0" y1="0" x2="2.9" y2="4" stroke="#C8587A" stroke-width="0.8" opacity="0.7"/><line x1="0" y1="0" x2="-2.9" y2="4" stroke="#C8587A" stroke-width="0.8" opacity="0.7"/><line x1="0" y1="0" x2="-4.7" y2="-1.5" stroke="#C8587A" stroke-width="0.8" opacity="0.7"/></g>
+  <!-- Cherry 2: twig tip left lower ~(24,162) -->
+  <g transform="translate(20,158) rotate(-18)"><ellipse cx="0" cy="-7" rx="5.5" ry="8" fill="#FFC4D6" opacity="0.9"/><ellipse cx="0" cy="-7" rx="5.5" ry="8" fill="#FFC4D6" opacity="0.9" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-7" rx="5.5" ry="8" fill="#FFB0C8" opacity="0.85" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-7" rx="5.5" ry="8" fill="#FFB0C8" opacity="0.85" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-7" rx="5.5" ry="8" fill="#FFC4D6" opacity="0.88" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2.8" fill="#FFD0E4"/><line x1="0" y1="0" x2="0" y2="-5" stroke="#C8587A" stroke-width="0.7" opacity="0.65"/><line x1="0" y1="0" x2="4.7" y2="-1.5" stroke="#C8587A" stroke-width="0.7" opacity="0.65"/><line x1="0" y1="0" x2="2.9" y2="4" stroke="#C8587A" stroke-width="0.7" opacity="0.65"/><line x1="0" y1="0" x2="-2.9" y2="4" stroke="#C8587A" stroke-width="0.7" opacity="0.65"/><line x1="0" y1="0" x2="-4.7" y2="-1.5" stroke="#C8587A" stroke-width="0.7" opacity="0.65"/></g>
+  <!-- Cherry 3: main branch mid ~(148,209) -->
+  <g transform="translate(144,200) rotate(22)"><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FFB8CE" opacity="0.88"/><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FFB8CE" opacity="0.88" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FF9EBC" opacity="0.83" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FF9EBC" opacity="0.83" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FFC4D6" opacity="0.86" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="3" fill="#FFD4E4"/><line x1="0" y1="0" x2="0" y2="-5" stroke="#C8587A" stroke-width="0.7" opacity="0.65"/><line x1="0" y1="0" x2="4.7" y2="-1.5" stroke="#C8587A" stroke-width="0.7" opacity="0.65"/><line x1="0" y1="0" x2="2.9" y2="4" stroke="#C8587A" stroke-width="0.7" opacity="0.65"/><line x1="0" y1="0" x2="-2.9" y2="4" stroke="#C8587A" stroke-width="0.7" opacity="0.65"/><line x1="0" y1="0" x2="-4.7" y2="-1.5" stroke="#C8587A" stroke-width="0.7" opacity="0.65"/></g>
+  <!-- Cherry 4: sub-branch right tip ~(252,117) -->
+  <g transform="translate(248,112) rotate(-8)"><ellipse cx="0" cy="-7.5" rx="5.5" ry="8" fill="#FFC4D6" opacity="0.9"/><ellipse cx="0" cy="-7.5" rx="5.5" ry="8" fill="#FFC4D6" opacity="0.9" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-7.5" rx="5.5" ry="8" fill="#FFB0C8" opacity="0.85" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-7.5" rx="5.5" ry="8" fill="#FFB0C8" opacity="0.85" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-7.5" rx="5.5" ry="8" fill="#FFC4D6" opacity="0.88" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2.8" fill="#FFD0E4"/><line x1="0" y1="0" x2="0" y2="-5" stroke="#C8587A" stroke-width="0.6" opacity="0.6"/><line x1="0" y1="0" x2="4.7" y2="-1.5" stroke="#C8587A" stroke-width="0.6" opacity="0.6"/><line x1="0" y1="0" x2="2.9" y2="4" stroke="#C8587A" stroke-width="0.6" opacity="0.6"/><line x1="0" y1="0" x2="-2.9" y2="4" stroke="#C8587A" stroke-width="0.6" opacity="0.6"/><line x1="0" y1="0" x2="-4.7" y2="-1.5" stroke="#C8587A" stroke-width="0.6" opacity="0.6"/></g>
+  <!-- Cherry 5: upper sub-branch tip ~(320,97) -->
+  <g transform="translate(317,90) rotate(12)"><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FFB8CE" opacity="0.87"/><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FFB8CE" opacity="0.87" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FF9EBC" opacity="0.82" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FF9EBC" opacity="0.82" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-8" rx="6" ry="8.5" fill="#FFC4D6" opacity="0.85" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="3" fill="#FFD4E4"/><line x1="0" y1="0" x2="0" y2="-5" stroke="#C8587A" stroke-width="0.7" opacity="0.6"/><line x1="0" y1="0" x2="4.7" y2="-1.5" stroke="#C8587A" stroke-width="0.7" opacity="0.6"/><line x1="0" y1="0" x2="2.9" y2="4" stroke="#C8587A" stroke-width="0.7" opacity="0.6"/><line x1="0" y1="0" x2="-2.9" y2="4" stroke="#C8587A" stroke-width="0.7" opacity="0.6"/><line x1="0" y1="0" x2="-4.7" y2="-1.5" stroke="#C8587A" stroke-width="0.7" opacity="0.6"/></g>
+
+  <!-- ── SAKURA on branch-bl (lighter, smaller) ── -->
+  <g transform="translate(92,250) rotate(-12)"><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#FFDCE6" opacity="0.88"/><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#FFDCE6" opacity="0.88" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#FFD0E0" opacity="0.84" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#FFD0E0" opacity="0.84" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-6" rx="4.5" ry="7" fill="#F4B8CA" opacity="0.8" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2.2" fill="#FFE8F0"/></g>
+  <g transform="translate(204,172) rotate(28)"><ellipse cx="0" cy="-5.5" rx="4.5" ry="6.5" fill="#FFE4EE" opacity="0.85"/><ellipse cx="0" cy="-5.5" rx="4.5" ry="6.5" fill="#FFE4EE" opacity="0.85" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-5.5" rx="4.5" ry="6.5" fill="#FFCCD8" opacity="0.8" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-5.5" rx="4.5" ry="6.5" fill="#FFCCD8" opacity="0.8" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-5.5" rx="4.5" ry="6.5" fill="#F4B8CA" opacity="0.76" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2" fill="#FFE0EC"/></g>
+  <g transform="translate(274,142) rotate(-5)"><ellipse cx="0" cy="-6" rx="5" ry="7" fill="#FFDCE6" opacity="0.86"/><ellipse cx="0" cy="-6" rx="5" ry="7" fill="#FFDCE6" opacity="0.86" transform="rotate(72,0,0)"/><ellipse cx="0" cy="-6" rx="5" ry="7" fill="#FFD0E0" opacity="0.82" transform="rotate(144,0,0)"/><ellipse cx="0" cy="-6" rx="5" ry="7" fill="#FFD0E0" opacity="0.82" transform="rotate(216,0,0)"/><ellipse cx="0" cy="-6" rx="5" ry="7" fill="#F4B8CA" opacity="0.78" transform="rotate(288,0,0)"/><circle cx="0" cy="0" r="2.3" fill="#FFE8F0"/></g>
+
+  <!-- Buds -->
+  <ellipse cx="60" cy="222" rx="3" ry="5" fill="#FFB8CE" opacity="0.7" transform="rotate(-10,60,222)"/>
+  <ellipse cx="168" cy="192" rx="2.5" ry="4.5" fill="#FFDCE6" opacity="0.68" transform="rotate(20,168,192)"/>
+  <ellipse cx="298" cy="114" rx="3" ry="5" fill="#FFB8CE" opacity="0.65" transform="rotate(-15,298,114)"/>
+  <ellipse cx="230" cy="158" rx="2.5" ry="4" fill="#FFDCE6" opacity="0.65" transform="rotate(8,230,158)"/>
+</svg>
 
 <!-- ─── NAV ─── -->
 <nav>
@@ -34,9 +120,6 @@
 
 <!-- ─── HERO ─── -->
 <section id="hero">
-  <div class="hero-blob blob-1"></div>
-  <div class="hero-blob blob-2"></div>
-  <div class="hero-blob blob-3"></div>
   <div class="hero-content">
     <div class="hero-text">
       <div class="hero-tag">Иллюстратор & Цифровой художник</div>
@@ -71,116 +154,52 @@
     <p class="section-sub reveal">Персонажи, кафе и интерьеры, эстетика, фэнтези — листай по категориям.</p>
 
     <div class="gallery-tabs reveal">
-      <button class="tab-btn active" onclick="filterGallery('all',this)">Все работы</button>
-      <button class="tab-btn" onclick="filterGallery('chars',this)">🧑‍🎨 Персонажи</button>
-      <button class="tab-btn" onclick="filterGallery('cafe',this)">☕ Кафе & интерьеры</button>
-      <button class="tab-btn" onclick="filterGallery('aesthetic',this)">🌸 Эстетика</button>
-      <button class="tab-btn" onclick="filterGallery('fantasy',this)">🐉 Фэнтези</button>
-      <button class="tab-btn" onclick="filterGallery('cute',this)">🍓 Милота</button>
+      <button class="tab-btn active" data-cat="all">Все работы</button>
+      <button class="tab-btn" data-cat="chars">🧑‍🎨 Персонажи</button>
+      <button class="tab-btn" data-cat="cafe">☕ Кафе & интерьеры</button>
+      <button class="tab-btn" data-cat="aesthetic">🌸 Эстетика</button>
+      <button class="tab-btn" data-cat="fantasy">🐉 Фэнтези</button>
+      <button class="tab-btn" data-cat="cute">🍓 Милота</button>
     </div>
 
-    <div class="gallery-grid" id="galleryGrid">
-
-      <!-- ── РЕАЛЬНЫЕ РАБОТЫ ── -->
-      <div class="gallery-item" data-cat="cafe" style="grid-column:span 2;aspect-ratio:2/1;cursor:pointer;" onclick="window.location.href='pixel.html'">
-        <img src="pixel_cafe.jpg" alt="Кофейня · игровой проект"/>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">Кофейня · игровой проект <span style="opacity:.6;font-size:.75rem;">→ подробнее</span></div></div>
-      </div>
-
-      <div class="gallery-item" data-cat="chars" style="cursor:pointer;" onclick="window.location.href='pixel.html'">
-        <img src="pixel_chars1.jpg" alt="Посетители кофейни"/>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">Посетители кофейни <span style="opacity:.6;font-size:.75rem;">→ подробнее</span></div></div>
-      </div>
-
-      <div class="gallery-item" data-cat="chars" style="cursor:pointer;" onclick="window.location.href='pixel.html'">
-        <img src="pixel_char2.jpg" alt="Главная героиня"/>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">Главная героиня <span style="opacity:.6;font-size:.75rem;">→ подробнее</span></div></div>
-      </div>
-
-      <!-- ── ЗАГЛУШКИ ── -->
-      <div class="gallery-item" data-cat="aesthetic">
-        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#FFE0E8,#FAF6F0);"><span>🌸</span><p>Эстетика</p></div>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">Весенняя эстетика</div></div>
-      </div>
-
-      <div class="gallery-item" data-cat="fantasy">
-        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#D8E8D8,#FAF6F0);"><span>🐉</span><p>Фэнтези</p></div>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">Лесная фея</div></div>
-      </div>
-
-      <div class="gallery-item" data-cat="cute">
-        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#FFD8E0,#FAF6F0);"><span>🍓</span><p>Милота</p></div>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">Клубничный котик</div></div>
-      </div>
-
-      <div class="gallery-item" data-cat="cafe">
-        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#F0E8D8,#FAF6F0);"><span>🏡</span><p>Интерьер</p></div>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">Уголок с книгами</div></div>
-      </div>
-
-      <div class="gallery-item" data-cat="aesthetic">
-        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#D0D8F0,#FAF6F0);"><span>🌙</span><p>Эстетика</p></div>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">Ночная эстетика</div></div>
-      </div>
-
-      <div class="gallery-item" data-cat="fantasy">
-        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#E8F0D8,#FAF6F0);"><span>🦋</span><p>Фэнтези</p></div>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">Бабочковая ведьма</div></div>
-      </div>
-
-      <div class="gallery-item" data-cat="cute">
-        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#FFE8D8,#FAF6F0);"><span>🍰</span><p>Милота</p></div>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">Торт на праздник</div></div>
-      </div>
-
-      <div class="gallery-item" data-cat="chars">
-        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#FFD8EC,#FAF6F0);"><span>🎀</span><p>Персонаж</p></div>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">Принцесса</div></div>
-      </div>
-
-      <div class="gallery-item" data-cat="cafe">
-        <div class="gallery-placeholder" style="background:linear-gradient(135deg,#D8ECD8,#FAF6F0);"><span>🌿</span><p>Кафе</p></div>
-        <div class="gallery-overlay"><div class="gallery-overlay-text">Зелёная терраса</div></div>
-      </div>
-
-    </div>
+    <div class="gallery-grid" id="galleryGrid"></div>
   </div>
 </section>
 
 <!-- ─── PROJECTS ─── -->
-<section id="projects" style="background:var(--white);">
+<section id="projects" style="background:var(--bg-2);">
   <div class="section-inner">
     <div class="section-tag reveal">Игровые проекты</div>
     <h2 class="section-title reveal">Проекты</h2>
     <p class="section-sub reveal">Большие работы — пиксель-арт для игр, серии иллюстраций и другие коллаборации.</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;" class="projects-grid">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;" class="projects-grid">
       <a href="pixel.html" style="text-decoration:none;grid-column:span 2;" class="proj-card reveal">
-        <div style="background:#1E1A2E;border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer;transition:transform 0.35s ease,box-shadow 0.35s ease;height:100%;min-height:320px;display:flex;flex-direction:column;"
-             onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 24px 60px rgba(0,0,0,0.2)'"
+        <div style="background:#1A1420;border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer;transition:transform 0.35s ease,box-shadow 0.35s ease;height:100%;min-height:320px;display:flex;flex-direction:column;border:1px solid rgba(255,182,200,0.1);"
+             onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.5),0 0 0 1px rgba(255,182,200,0.15)'"
              onmouseout="this.style.transform='';this.style.boxShadow=''">
-          <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.08) 3px,rgba(0,0,0,0.08) 4px);pointer-events:none;z-index:1;"></div>
-          <img src="pixel_cafe.jpg" alt="Кофейня" style="width:100%;height:200px;object-fit:cover;image-rendering:pixelated;opacity:0.85;"/>
-          <div style="padding:28px 28px 24px;flex:1;position:relative;z-index:2;">
+          <div style="position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.07) 3px,rgba(0,0,0,0.07) 4px);pointer-events:none;z-index:1;"></div>
+          <img src="pixel_cafe.jpg" alt="Кофейня" style="width:100%;height:200px;object-fit:cover;image-rendering:pixelated;opacity:0.8;"/>
+          <div style="padding:26px 28px 24px;flex:1;position:relative;z-index:2;">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-              <span style="background:rgba(200,121,65,0.18);color:#C87941;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;border:1px solid rgba(200,121,65,0.3);">🎮 Пиксель-арт</span>
-              <span style="background:rgba(90,138,90,0.18);color:#5A8A5A;font-size:0.72rem;font-weight:700;padding:4px 12px;border-radius:100px;">● В разработке</span>
+              <span style="background:rgba(255,182,200,0.1);color:var(--sakura-mid);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;border:1px solid rgba(255,182,200,0.2);">🎮 Пиксель-арт</span>
+              <span style="background:rgba(100,200,130,0.1);color:#70C87A;font-size:0.68rem;font-weight:700;padding:4px 12px;border-radius:100px;">● В разработке</span>
             </div>
-            <div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:#FAF6F0;margin-bottom:8px;">Кофейня · Игровой проект</div>
-            <div style="font-size:0.85rem;color:rgba(250,246,240,0.55);line-height:1.7;margin-bottom:20px;">Персонажи, интерьеры и тайлсеты для учебной игры. Тема — уютная кофейня.</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--white);margin-bottom:8px;">Кофейня · Игровой проект</div>
+            <div style="font-size:0.82rem;color:var(--text-dim);line-height:1.7;margin-bottom:18px;">Персонажи, интерьеры и тайлсеты для учебной игры. Тема — уютная кофейня.</div>
             <div style="display:flex;gap:8px;flex-wrap:wrap;">
-              <span style="background:rgba(255,255,255,0.08);color:rgba(250,246,240,0.6);font-size:0.75rem;padding:4px 12px;border-radius:100px;">Спрайты</span>
-              <span style="background:rgba(255,255,255,0.08);color:rgba(250,246,240,0.6);font-size:0.75rem;padding:4px 12px;border-radius:100px;">Тайлсеты</span>
-              <span style="background:rgba(255,255,255,0.08);color:rgba(250,246,240,0.6);font-size:0.75rem;padding:4px 12px;border-radius:100px;">Персонажи</span>
+              <span style="background:rgba(255,255,255,0.05);color:var(--text-dim);font-size:0.72rem;padding:4px 12px;border-radius:100px;border:1px solid var(--border);">Спрайты</span>
+              <span style="background:rgba(255,255,255,0.05);color:var(--text-dim);font-size:0.72rem;padding:4px 12px;border-radius:100px;border:1px solid var(--border);">Тайлсеты</span>
+              <span style="background:rgba(255,255,255,0.05);color:var(--text-dim);font-size:0.72rem;padding:4px 12px;border-radius:100px;border:1px solid var(--border);">Персонажи</span>
             </div>
           </div>
-          <div style="position:absolute;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:rgba(200,121,65,0.2);border:1px solid rgba(200,121,65,0.4);display:flex;align-items:center;justify-content:center;color:#C87941;font-size:1rem;z-index:2;">→</div>
+          <div style="position:absolute;bottom:24px;right:24px;width:38px;height:38px;border-radius:50%;background:rgba(255,182,200,0.1);border:1px solid rgba(255,182,200,0.25);display:flex;align-items:center;justify-content:center;color:var(--sakura-mid);z-index:2;">→</div>
         </div>
       </a>
-      <div class="reveal" style="background:var(--cream);border-radius:var(--radius);min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:2px dashed var(--cream-dark);transition:border-color 0.3s;padding:32px;text-align:center;"
-           onmouseover="this.style.borderColor='var(--peach)'" onmouseout="this.style.borderColor='var(--cream-dark)'">
-        <div style="font-size:2.5rem;">✦</div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown-light);">Следующий проект</div>
-        <div style="font-size:0.8rem;color:var(--brown-light);line-height:1.6;max-width:180px;">Здесь появится новая работа — следи за обновлениями</div>
+      <div class="reveal" style="background:var(--bg-card);border-radius:var(--radius);min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:1px dashed rgba(255,255,255,0.08);padding:32px;text-align:center;transition:border-color 0.3s;"
+           onmouseover="this.style.borderColor='rgba(255,182,200,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'">
+        <div style="font-size:2.2rem;opacity:0.3;">✦</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--text-mid);font-weight:300;">Следующий проект</div>
+        <div style="font-size:0.78rem;color:var(--text-dim);line-height:1.6;max-width:180px;">Здесь появится новая работа — следи за обновлениями</div>
       </div>
     </div>
   </div>
@@ -197,8 +216,8 @@
       <div class="reveal-right">
         <div class="section-tag">О художнице</div>
         <h2 class="section-title">Привет,<br/><em>я Дори</em> 🌱</h2>
-        <p style="font-size:1rem;color:var(--brown-mid);line-height:1.8;margin-bottom:20px;">Цифровой иллюстратор, влюблённая в уютные кафе, сказочных персонажей и тонкую эстетику. Рисую уже несколько лет и каждый раз открываю что-то новое в своём стиле.</p>
-        <p style="font-size:1rem;color:var(--brown-mid);line-height:1.8;margin-bottom:32px;">Работаю с заказчиками по всему интернету — персонажи под вас, иллюстрации для проектов, поздравительные открытки и просто арт с душой.</p>
+        <p style="font-size:0.95rem;color:var(--text-mid);line-height:1.85;margin-bottom:18px;font-weight:300;">Цифровой иллюстратор, влюблённая в уютные кафе, сказочных персонажей и тонкую эстетику. Рисую уже несколько лет и каждый раз открываю что-то новое в своём стиле.</p>
+        <p style="font-size:0.95rem;color:var(--text-mid);line-height:1.85;margin-bottom:30px;font-weight:300;">Работаю с заказчиками по всему интернету — персонажи под вас, иллюстрации для проектов, поздравительные открытки и просто арт с душой.</p>
         <div class="about-chips">
           <span class="chip">🧑‍🎨 Персонажи</span>
           <span class="chip">☕ Кафе & интерьеры</span>
@@ -272,20 +291,20 @@
     <h2 class="section-title reveal">Давайте создадим<br/><em>что-то вместе</em></h2>
     <div class="contacts-grid">
       <div class="reveal-left">
-        <p style="font-size:0.95rem;color:var(--brown-mid);line-height:1.75;margin-bottom:28px;">Хотите заказать арт или задать вопрос? Пишите в любое удобное место — отвечу в течение дня.</p>
+        <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.8;margin-bottom:26px;font-weight:300;">Хотите заказать арт или задать вопрос? Пишите в любое удобное место — отвечу в течение дня.</p>
         <div class="social-cards">
           <a href="https://t.me/pomidory_666" target="_blank" class="social-card">
-            <div class="social-icon si-tg">💬</div>
+            <div class="social-icon">💬</div>
             <div><div class="social-name">Telegram</div><div class="social-handle">@pomidory_666</div></div>
             <div class="social-arrow">→</div>
           </a>
           <a href="#" class="social-card">
-            <div class="social-icon si-vk">🫐</div>
+            <div class="social-icon">🫐</div>
             <div><div class="social-name">ВКонтакте</div><div class="social-handle">Добавить ссылку</div></div>
             <div class="social-arrow">→</div>
           </a>
           <a href="#" class="social-card">
-            <div class="social-icon si-inst">🌸</div>
+            <div class="social-icon">🌸</div>
             <div><div class="social-name">Instagram</div><div class="social-handle">Добавить ссылку</div></div>
             <div class="social-arrow">→</div>
           </a>
@@ -328,28 +347,64 @@
 </div>
 
 <script>
-// ─── GALLERY FILTER ───
-function filterGallery(cat, btn) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
+// ─── GALLERY DATA ───
+const works = [
+  { cat: 'cafe',      img: 'pixel_cafe.jpg',   title: 'Кофейня · игровой проект', link: 'pixel.html' },
+  { cat: 'chars',     img: 'pixel_chars1.jpg', title: 'Посетители кофейни',       link: 'pixel.html' },
+  { cat: 'chars',     img: 'pixel_char2.jpg',  title: 'Главная героиня',           link: 'pixel.html' },
+  { cat: 'aesthetic', emoji: '🌸', title: 'Весенняя эстетика',   bg: 'linear-gradient(135deg,#2d1c28,#1c1825)' },
+  { cat: 'fantasy',   emoji: '🐉', title: 'Лесная фея',          bg: 'linear-gradient(135deg,#1a2820,#1c1825)' },
+  { cat: 'cute',      emoji: '🍓', title: 'Клубничный котик',    bg: 'linear-gradient(135deg,#2a1c22,#1c1825)' },
+  { cat: 'cafe',      emoji: '🏡', title: 'Уголок с книгами',    bg: 'linear-gradient(135deg,#22201c,#1c1825)' },
+  { cat: 'aesthetic', emoji: '🌙', title: 'Ночная эстетика',     bg: 'linear-gradient(135deg,#1a1c2a,#1c1825)' },
+  { cat: 'fantasy',   emoji: '🦋', title: 'Бабочковая ведьма',   bg: 'linear-gradient(135deg,#1c2220,#1c1825)' },
+  { cat: 'cute',      emoji: '🍰', title: 'Торт на праздник',    bg: 'linear-gradient(135deg,#2a1e1c,#1c1825)' },
+  { cat: 'chars',     emoji: '🎀', title: 'Принцесса',           bg: 'linear-gradient(135deg,#2a1c26,#1c1825)' },
+  { cat: 'cafe',      emoji: '🌿', title: 'Зелёная терраса',     bg: 'linear-gradient(135deg,#1c2620,#1c1825)' },
+];
 
-  const items = document.querySelectorAll('#galleryGrid .gallery-item');
-  let first = true;
-  items.forEach(item => {
-    const match = cat === 'all' || item.dataset.cat === cat;
-    item.classList.toggle('hidden', !match);
-    if (match) {
-      if (first) {
-        item.style.gridColumn = 'span 2';
-        item.style.aspectRatio = '2/1';
-        first = false;
-      } else {
-        item.style.gridColumn = '';
-        item.style.aspectRatio = '1';
-      }
+const grid = document.getElementById('galleryGrid');
+
+function renderGallery(cat) {
+  const filtered = cat === 'all' ? works : works.filter(w => w.cat === cat);
+  grid.innerHTML = '';
+  filtered.forEach((w, i) => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    if (i === 0) {
+      item.style.gridColumn = 'span 2';
+      item.style.aspectRatio = '2/1';
     }
+    const inner = w.img
+      ? `<img src="${w.img}" alt="${w.title}" style="width:100%;height:100%;object-fit:cover;image-rendering:pixelated;">`
+      : `<div class="gallery-placeholder" style="background:${w.bg};width:100%;height:100%;"><span>${w.emoji}</span><p>${w.title}</p></div>`;
+    item.innerHTML = `${inner}<div class="gallery-overlay"><div class="gallery-overlay-text">${w.title}${w.link ? ' <span style="opacity:.6;font-size:.75rem;">→ подробнее</span>' : ''}</div></div>`;
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(18px)';
+    item.style.transition = `opacity 0.4s ease ${i * 0.06}s, transform 0.4s ease ${i * 0.06}s`;
+    item.style.cursor = w.link || w.img ? 'pointer' : 'default';
+    item.querySelector('.gallery-overlay').style.pointerEvents = 'none';
+    item.addEventListener('click', () => {
+      if (w.link) { window.location.href = w.link; return; }
+      if (w.img) { openLightbox(w.img); }
+    });
+    grid.appendChild(item);
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      item.style.opacity = '1';
+      item.style.transform = 'translateY(0)';
+    }));
   });
 }
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderGallery(btn.dataset.cat);
+  });
+});
+
+renderGallery('all');
 
 // ─── LIGHTBOX ───
 function openLightbox(src) {
@@ -368,15 +423,15 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const siblings = [...entry.target.parentElement.querySelectorAll('.reveal,.reveal-left,.reveal-right')];
-      const index = siblings.indexOf(entry.target);
-      setTimeout(() => entry.target.classList.add('visible'), index * 100);
+      const idx = siblings.indexOf(entry.target);
+      setTimeout(() => entry.target.classList.add('visible'), idx * 100);
       observer.unobserve(entry.target);
     }
   });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el => observer.observe(el));
 
-// ─── NAV HIGHLIGHT ───
+// ─── NAV ACTIVE ───
 const navObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -403,9 +458,78 @@ function handleSubmit(e) {
   e.preventDefault();
   const btn = document.querySelector('.btn-submit');
   btn.textContent = '✓ Заявка отправлена!';
-  btn.style.background = 'var(--peach-deep)';
+  btn.style.background = '#70C87A';
   setTimeout(() => { btn.textContent = 'Отправить заявку ✦'; btn.style.background = ''; }, 3000);
 }
+
+// ─── SAKURA PETALS CANVAS ───
+(function() {
+  const canvas = document.getElementById('sakura-canvas');
+  const ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Simple petal shape
+  function drawPetal(ctx, x, y, size, angle, opacity) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.globalAlpha = opacity;
+
+    // Draw a 5-petal flower shape scaled down to one petal
+    ctx.beginPath();
+    ctx.ellipse(0, -size * 0.5, size * 0.35, size * 0.6, 0, 0, Math.PI * 2);
+    const grad = ctx.createRadialGradient(0, -size * 0.4, 0, 0, -size * 0.4, size * 0.7);
+    grad.addColorStop(0, 'rgba(255,220,228,0.95)');
+    grad.addColorStop(0.6, 'rgba(255,182,200,0.8)');
+    grad.addColorStop(1, 'rgba(244,167,185,0.4)');
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.restore();
+  }
+
+  const petals = Array.from({ length: 28 }, () => ({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight - window.innerHeight,
+    size: 6 + Math.random() * 10,
+    speedY: 0.4 + Math.random() * 0.9,
+    speedX: -0.3 + Math.random() * 0.6,
+    angle: Math.random() * Math.PI * 2,
+    rotSpeed: (Math.random() - 0.5) * 0.02,
+    opacity: 0.25 + Math.random() * 0.45,
+    swing: Math.random() * Math.PI * 2,
+    swingSpeed: 0.008 + Math.random() * 0.012,
+    swingAmp: 0.6 + Math.random() * 1.2,
+  }));
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    petals.forEach(p => {
+      p.swing += p.swingSpeed;
+      p.x += p.speedX + Math.sin(p.swing) * p.swingAmp;
+      p.y += p.speedY;
+      p.angle += p.rotSpeed;
+
+      if (p.y > canvas.height + 20) {
+        p.y = -20;
+        p.x = Math.random() * canvas.width;
+      }
+      if (p.x > canvas.width + 20) p.x = -20;
+      if (p.x < -20) p.x = canvas.width + 20;
+
+      drawPetal(ctx, p.x, p.y, p.size, p.angle, p.opacity);
+    });
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
 </script>
 </body>
 </html>
